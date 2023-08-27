@@ -22,6 +22,12 @@ Answer: sort products by price to customers. algorithms are sorting
 
 1.2-2 Suppose we are comparing implementations of insertion sort and merge sort on the same machine. For inputs of size $n$, insertion sort runs in $8n^2$ steps, while merge sort runs in $64nlgn$ steps. For which values of n does insertion sort beat merge sort?
 Answer: to beat merge sort 
+```math
+8n^2 <= 64nlgn  
+8n <= 64lgn  
+n <= 8lgn  
+n/8 <= lgn  
+```
 $$
 8n^2 <= 64nlgn  
 => 8n <= 64lgn  
