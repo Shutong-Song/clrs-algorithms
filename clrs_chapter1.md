@@ -30,7 +30,6 @@ n/8 <= lgn
 where if $n \in [2, 43]$
 
 1.2-3 What is the smallest value of $n$ such that an algorithm whose running time is $100n^2$ runs faster than an algorithm whose running time is $2^n$ on the same machine?  
-![plot1](assets/clrs_chapter1_2-3.png)
 
 
 
