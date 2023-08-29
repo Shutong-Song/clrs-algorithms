@@ -1,4 +1,4 @@
-### chaper 2
+### chapter 2
 
 
 2.1-1 Using Figure 2.2 as a model, illustrate the operation of INSERTION SORT on the array [31; 41; 59; 26; 41; 58].  
