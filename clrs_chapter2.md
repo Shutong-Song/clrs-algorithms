@@ -129,18 +129,23 @@ void mergesort(std::vector<int>& arr, int low, int high)
 ```
 
 2.3-3 Use mathematical induction to show that when n is an exact power of 2, the solution of the recurrence  
+
+
+
 $$
 T(n) = \begin{cases} 2,\text{ if n= 2}\\\\2T(n/2)+n, \text{ if n = $2^k$} \end{cases}
 $$
+
+
 is $T(n) = nlgn$  
 Answer: 
 Known that $T(n) = nlg(n)$, prove that $T(2n) = 2nlg(2n)$  
 Known that $T(2^k) = 2^klg(2^k)$  
-we have:  
+we have:
 $$2^{k+1}lg(2^{k+1}) = 2*2^k(lg2^k + lg2)
 \Rightarrow 2*2^k(lg2^k + 1) 
 \Rightarrow 2T(2n/2) + 2n
-$$  
+$$
 we have proved that $T(2n) = 2T(2n/2) + 2n$  
 
 
