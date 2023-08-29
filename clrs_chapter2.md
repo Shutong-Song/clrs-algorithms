@@ -146,8 +146,8 @@ we have:
 
 
 $$
-2^{k+1}lg(2^{k+1}) = 2 \times 2^k(lg2^k + lg2)\\\\
-\Rightarrow 2*2^k(lg2^k + 1)\\\\
+2^{k+1}lg(2^{k+1}) = 2 \times 2^k(lg2^k + lg2) \\
+\Rightarrow 2*2^k(lg2^k + 1) \\
 \Rightarrow 2T(2n/2) + 2n  
 $$
 
