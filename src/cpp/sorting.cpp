@@ -24,6 +24,26 @@ void insertionsort(std::vector<int>& arr)
     }
 }
 
+void insert_kth(std::vector<int>& arr, int k)
+{
+    int key = arr[k+1];
+    while(k>-1 && key < arr[k])
+    {
+        arr[k+1] = arr[k];
+        k--;
+    }
+    arr[k+1] = key;
+}
+
+void insertionsort_recursive(std::vector<int>& arr, int n)
+{
+    if(n > 0)
+    {
+        insertionsort_recursive(arr, n-1);
+        insert_kth(arr, n-1);
+    }
+}
+
 //addtion of two n-bit binary integers
 std::vector<int> binary_add(std::vector<int>& arr1, std::vector<int>& arr2)
 {
@@ -108,10 +128,14 @@ void mergesort(std::vector<int>& arr, int low, int high)
 int main()
 {
     std::vector<int> arr = {19, 7, 1, 8, 2, 2, 13, 7};
-    mergesort(arr, 0, arr.size());
+    int i = arr.size()-1;
+    insertionsort_recursive(arr, i);
+    std::for_each(arr.begin(), arr.end(), [](const int x){std::cout << x << "\n";});
+
+    //mergesort(arr, 0, arr.size());
     //std::vector<int> test(arr.begin()+2, arr.begin()+5); //intialize with subset of another vector like python
     //selectionsort(arr);
-    std::for_each(arr.begin(), arr.end(), [](const int x){std::cout << x << "\n";});
+    //std::for_each(arr.begin(), arr.end(), [](const int x){std::cout << x << "\n";});
 
     //std::vector<int> arr1 = {1, 2, 3}, arr2 = {9, 0, 7};
     //std::vector<int> res = binary_add(arr1, arr2);

@@ -132,4 +132,83 @@ void mergesort(std::vector<int>& arr, int low, int high)
 $$
 T(n) = \begin{cases} 2,\text{ if n= 2}\\\\2T(n/2)+n, \text{ if n = $2^k$} \end{cases}
 $$
-is $T(n) = nlgn$
+is $T(n) = nlgn$  
+Answer: 
+Known that $T(n) = nlg(n)$, prove that $T(2n) = 2nlg(2n)$  
+Known that $T(2^k) = 2^klg(2^k)$  
+=> $2^{k+1}lg(2^{k+1}) = 2*2^k(lg2^k + lg2) = 2*2^k(lg2^k + 1) = 2T(2n/2) + 2n$  
+=> $2T(2n/2) + 2n = T(2n)$  
+
+
+
+
+2.3-4 We can express insertion sort as a recursive procedure as follows. In order to sort $A[1..n]$, we recursively sort $A[1...n-1]$ and then insert $A[n]$ into the sorted array $A[1...n-1]$. Write a recurrence for the running time of this recursive version of insertion sort.  
+```cpp
+void insert_kth(std::vector<int>& arr, int k)
+{
+    int key = arr[k+1];
+    while(k>-1 && key < arr[k])
+    {
+        arr[k+1] = arr[k];
+        k--;
+    }
+    arr[k+1] = key;
+}
+
+void insertionsort_recursive(std::vector<int>& arr, int n)
+{
+    if(n > 0)
+    {
+        insertionsort_recursive(arr, n-1);
+        insert_kth(arr, n-1);
+    }
+}
+```
+
+
+2.3-5 binary search  
+```cpp
+int binary_search(std::vector<int>& arr, int target)
+{
+    int low = 0;
+    int high = arr.size();
+    while(low < high)
+    {
+        int mid = (low + high)/2;
+        if(arr[mid] == target)
+            return mid;
+        else if(arr[mid] > target)
+            high = mid;
+        else
+            low = mid + 1;
+    }
+    return -1;
+}
+
+
+int binary_search_recursive(std::vector<int>& arr, int target, int low, int high)
+{
+    if(low < high)
+    {
+        int mid = (low + high)/2;
+        if(arr[mid] == target)
+            return mid;
+        else if(arr[mid] > target)
+            return binary_search_recursive(arr, target, low, mid);
+        else
+            return binary_search_recursive(arr, target, mid+1, high);
+    }
+    return -1;
+}
+
+```
+
+
+2.3-6 Observe that the while loop of lines 5–7 of the insertion sort procedure in Section 2.1 uses a linear search to scan (backward) through the sorted subarray $A[1...n-1]$. Can we use a binary search (see Exercise 2.3-5) instead to improve the overall worst-case running time of insertion sort to $\Theta(nlgn)$  
+Answer: binary search will not improve the worst-case because sort insertion sort involves move the elements not just look up.
+
+
+
+
+2.3-7 Describe a $\Theta(nlgn)$ time algorithm that, given a set S of n integers and another integer x, determines whether or not there exist two elements in S whose sum is exactly x.  
+Answer: first sort the array S,  and use two pointers from begin and end of the array, if the addition of two pointers values are greater than x, move higher value pointer down, otherwise move lower value pointer up, util two pointers meet, if still no result, it doesn't exist, otherwise exit.
